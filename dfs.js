@@ -1,6 +1,6 @@
 const graph = {
-  a : ['b','c'],
-  b : ['d'],
+  a: ['b', 'c'],
+  b: ['d'],
   c: ['e'],
   d: ['f'],
   e: [],
@@ -9,24 +9,24 @@ const graph = {
 
 graph
 
-function depthFirstSearch(graph, source){
+function depthFirstSearch(graph, source) {
   const stack = [source];
-  while(stack.length > 0){
+  while (stack.length > 0) {
     stack
     const current = stack.pop();
     console.log(current);
     console.log(graph[current])
-    for(let neighbor of graph[current]){
+    for (let neighbor of graph[current]) {
       neighbor
       stack.push(neighbor);
     }
   }
 }
 graph
-function depthFirstSearchRecursion(graph, source){
+function depthFirstSearchRecursion(graph, source) {
   console.log(source);
   console.log(graph[source])
-  for(let neighbor of graph[source]){
+  for (let neighbor of graph[source]) {
     neighbor
     depthFirstSearchRecursion(graph, neighbor);
   }
