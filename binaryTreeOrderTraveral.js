@@ -1,9 +1,9 @@
 class TreeNode {
-    constructor(val, left, right) {
-        this.val = (val === undefined ? 0 : val)
-        this.left = (left === undefined ? null : left)
-        this.right = (right === undefined ? null : right)
-    }
+  constructor(val, left, right) {
+    this.val = val === undefined ? 0 : val;
+    this.left = left === undefined ? null : left;
+    this.right = right === undefined ? null : right;
+  }
 }
 
 first = new TreeNode(3);
@@ -21,34 +21,34 @@ third.right = fifth;
 
 // inOrderTraversal(first);
 
-levelOrder(first)
+levelOrder(first);
 
-levelOrderArr = []
+levelOrderArr = [];
 
-function levelOrder(root){
-    if(root === null) {
-        // console.log(null);
-        return
-    }
-    level = []
-    left = levelOrder(root.left)
-    right = levelOrder(root.right)
-    level = [left, right];
-    levelOrderArr.push(level);
+function levelOrder(root) {
+  if (root === null) {
+    // console.log(null);
+    return;
+  }
+  level = [];
+  left = levelOrder(root.left);
+  right = levelOrder(root.right);
+  level = [left, right];
+  levelOrderArr.push(level);
 }
 
-levelOrderArr
+levelOrderArr;
 
 function inOrderTraversal(node) {
-    if (node === null) return;
-    inOrderTraversal(node.left);
-    console.log(node.val);
-    inOrderTraversal(node.right);
+  if (node === null) return;
+  inOrderTraversal(node.left);
+  console.log(node.val);
+  inOrderTraversal(node.right);
 }
 
 function postOrderTraversal(node) {
-    if (node === null) return;
-    postOrderTraversal(node.right);
-    console.log(node.val);
-    postOrderTraversal(node.left);
+  if (node === null) return;
+  postOrderTraversal(node.right);
+  console.log(node.val);
+  postOrderTraversal(node.left);
 }

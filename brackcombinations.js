@@ -6,27 +6,21 @@ then the possible combinations of 3 pairs of parenthesis,
 namely: ()()(), are ()()(), ()(()), (())(), ((())), and (()()). 
 There are 5 total combinations when the input is 3, so your program should return 5. */
 
-function BracketCombinations(num){
-
-    return num;
+function BracketCombinations(num) {
+  return num;
 }
 
-function validateBrackets(str){
-    const stack = [];
-    for(const c of str){
-        if(c === "(")
-            stack.push("(");
-        else if(c === ")" && stack.length === 0)
-            return false;
-        else
-            stack.pop();
-    }
-    return stack.length === 0;
+function validateBrackets(str) {
+  const stack = [];
+  for (const c of str) {
+    if (c === "(") stack.push("(");
+    else if (c === ")" && stack.length === 0) return false;
+    else stack.pop();
+  }
+  return stack.length === 0;
 }
 
-function generateBrackets(num){
-    
-}
+function generateBrackets(num) {}
 
 console.log(validateBrackets("()"));
 console.log(validateBrackets("(()"));

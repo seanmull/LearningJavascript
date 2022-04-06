@@ -11,10 +11,9 @@ Input: "aa_"
 Output: false
 Input: "u__hello_world123"
 Output: true */
-function CodeLandUserNameValidation(str){
-    const regex = /^[A-Za-z]\w{2,23}[^_]$/gm
-    return regex.test(str); 
-
+function CodeLandUserNameValidation(str) {
+  const regex = /^[A-Za-z]\w{2,23}[^_]$/gm;
+  return regex.test(str);
 }
 
 const str = "u__hello_worldsadfsadf123";

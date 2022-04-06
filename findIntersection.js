@@ -8,15 +8,15 @@ in elements of strArr in sorted order. If there is no intersection, return the s
 // // Input: ["1, 3, 4, 7, 13", "1, 2, 4, 13, 15"]
 // Output: 1,4,13
 
-function FindIntersection(strArr){
-    const numbers1 = convertStringToArray(strArr[0]);
-    const numbers2 = convertStringToArray(strArr[1]);
-    return numbers1.filter(num => num in numbers2);
+function FindIntersection(strArr) {
+  const numbers1 = convertStringToArray(strArr[0]);
+  const numbers2 = convertStringToArray(strArr[1]);
+  return numbers1.filter((num) => num in numbers2);
 }
 
-function convertStringToArray(str){
-    const arr = str.split(", ");
-    return arr.map(char => Number(char));
+function convertStringToArray(str) {
+  const arr = str.split(", ");
+  return arr.map((char) => Number(char));
 }
 
 const arr = ["1, 3, 4, 7, 13", "1, 2, 4, 13, 15"];
