@@ -1,73 +1,73 @@
-const array = [1,2,3,4]
+const array = [1, 2, 3, 4];
 array[2] = 8;
-array
+array;
 // array = []
 
 const map = new Map();
 map.set("one", 1);
-map
+map;
 console.log(map.get("one"));
 
-for(const [k,v] of map){
+for (const [k, v] of map) {
   console.log(`${k} ${v}`);
 }
 
-map.clear()
-map
+map.clear();
+map;
 
 map.set("w", "o");
 map.set("o", "r");
 map.set("r", "d");
 
-map
+map;
 
-class Trie{
-  constructor(){
+class Trie {
+  constructor() {
     this.root = {};
   }
 
-  insert(word){
+  insert(word) {
     let node = this.root;
-    for(let c of word){
-      if(node[c] == null) node[c] = {};
+    for (let c of word) {
+      if (node[c] == null) node[c] = {};
       node = node[c];
     }
-    console.log(this.root)
+    console.log(this.root);
     node.isWord = true;
   }
 
-  traverse(word){
+  traverse(word) {
     let node = this.root;
-    for(let c of word){
+    for (let c of word) {
       node = node[c];
-      if(node == null) return null;
+      if (node == null) return null;
     }
     return node;
   }
 
-  search(word){
+  search(word) {
     const node = this.traverse(word);
     return node != null && node.isWord == true;
   }
 
-  startsWith(prefix){
+  startsWith(prefix) {
     return this.traverse(prefix) != null;
   }
 }
 
 const trie = new Trie();
-trie
+trie;
 trie.insert("word");
-console.log(trie.search("word"))
-console.log(trie.search("wor"))
-console.log(trie.startsWith("worde"))
-trie
+console.log(trie.search("word"));
+console.log(trie.search("wor"));
+console.log(trie.startsWith("worde"));
+trie;
 
 let root = {};
 let hash = root;
 hash["c"] = {};
-hash
-hash = hash["c"] 
+hash;
+hash = hash["c"];
 hash["d"] = {};
 hash = hash["d"];
-root
+root;
