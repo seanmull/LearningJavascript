@@ -7,7 +7,7 @@
         "protocol": "auto",
         "stopOnEntry": true,
         "console": "integratedTerminal",
-        "program": "${workspaceRoot}/questionmarks.js",
+        "program": "${workspaceRoot}/node/events.js",
         "cwd": "${workspaceRoot}"
       }
     }

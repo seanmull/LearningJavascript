@@ -1,8 +1,8 @@
-array = [2, 4, 6, 8];
+let array = [2, 4, 6, 8];
 
 //putting diff in for loop to keep it local
 //pulling from previous values
-arithmetic = true;
+let arithmetic = true;
 for (let i = 2, diff = array[1] - array[0]; i < array.length; i++) {
   diff;
   console.log(array[i - 1]);
@@ -87,7 +87,7 @@ function lruCache(strArr) {
   strArr;
   const CACHE_MAX = 5;
   let cache = [];
-  strArr.forEach(function (element, index) {
+  strArr.forEach(function (element) {
     let found = cache.indexOf(element);
     element;
     found;
