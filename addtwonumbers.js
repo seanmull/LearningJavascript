@@ -25,7 +25,7 @@ function addTwoNumbers(l1, l2) {
   l2;
   let carryOver = 0;
   while (l1 && l2) {
-    num = l1.val + l2.val + carryOver;
+    let num = l1.val + l2.val + carryOver;
     if (carryOver == 1) carryOver = 0;
     if (num > 9) {
       carryOver = 1;
