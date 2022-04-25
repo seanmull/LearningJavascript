@@ -8,7 +8,7 @@ console.log(Array.isArray(numbers));
 console.log(numbers[3]);
 console.log(numbers.indexOf(36));
 
-numbers;
+numbers
 numbers.push(250);
 numbers;
 numbers.unshift(120);

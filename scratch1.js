@@ -1,10 +1,10 @@
 const exams = [80, 90,92, 70]
 
-words = exams.some(e => e > 92);
-words
+let words = exams.some(e => e > 92);
+console.log(words)
 
-words2 = exams.every(e => e > 10);
-words2
+let words2 = exams.every(e => e > 10);
+console.log(words2)
 
 function callTwice(func){
   func();
