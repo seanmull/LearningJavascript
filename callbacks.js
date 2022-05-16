@@ -12,7 +12,7 @@ function loadSomeQuickRunningScript() {
 // loadSomeLongRunningScript(loadSomeQuickRunningScript)
 // loadSomeQuickRunningScript()
 
-new Promise((resolve, reject) => {
+const p1 = new Promise((resolve, reject) => {
   //Producing code
   resolve("success")
   reject("failure")
@@ -23,7 +23,7 @@ new Promise((resolve, reject) => {
 )
 
 
-new Promise((resolve, reject) => {
+const p2 = new Promise((resolve, reject) => {
   //Producing code
   resolve("success")
   reject("failure")
@@ -33,4 +33,14 @@ new Promise((resolve, reject) => {
 ).then(
   loadSomeQuickRunningScript()
 )
+
+Promise.all([
+  p2,
+  p1
+]).then((values) => {
+  console.log(values)
+})
+
+
+
 
