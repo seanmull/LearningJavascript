@@ -32,7 +32,9 @@ class Queue{
     this.length++
   }
 
-  isEmpty
+  isEmpty(){
+    return this.length === 0
+  }
 }
 
 let queue = new Queue()

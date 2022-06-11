@@ -7,7 +7,7 @@
         "protocol": "auto",
         "stopOnEntry": true,
         "console": "integratedTerminal",
-        "program": "${workspaceRoot}/dsa/implementQueues.js",
+        "program": "${workspaceRoot}/dsa/maxSubArray.js",
         "cwd": "${workspaceRoot}"
       }
     }
