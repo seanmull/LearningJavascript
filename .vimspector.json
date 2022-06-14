@@ -7,7 +7,7 @@
         "protocol": "auto",
         "stopOnEntry": true,
         "console": "integratedTerminal",
-        "program": "${workspaceRoot}",
+        "program": "${workspaceRoot}/dsa/implementQueues.js",
         "cwd": "${workspaceRoot}"
       }
     }
