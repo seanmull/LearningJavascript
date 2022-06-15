@@ -31,4 +31,30 @@ function dashinsert(str) {
 
   return dashedString;
 }
+
+
+
+const dashedInsert = (str) => {
+  let arr = str.split("")
+  for(let i = 0; i < arr.length - 1; i++){
+    if(arr[i] % 2 !== 0 && arr[i + 1] % 2 !== 0){
+      arr[i] += "-"
+    }
+  }
+  return arr.join("")
+}
+const dashedInsert2 = (str) => {
+  let arr = str.split("")
+  let [first, second] = [0, 1]
+  while(second < arr.length){
+    if(arr[first] % 2 !== 0 && 
+       arr[second] % 2 !== 0){
+      arr[first] += "-"
+    }
+    first++; second++;
+  }
+  return arr.join("")
+}
+console.log(dashedInsert("454793"))
+console.log(dashedInsert2("454793"))
 console.log(dashinsert("454793"));
