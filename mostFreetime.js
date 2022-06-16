@@ -1,3 +1,5 @@
+const { parseInt } = require("lodash");
+
 function ParseTime(time) {
   var timeParts = time.split(':');
   var hours = parseInt(timeParts[0]);
@@ -48,4 +50,56 @@ function MostFreeTime(strArr) {
 }
 
 let input = ["12:15PM-02:00PM", "09:00AM-10:00AM", "10:30AM-12:00PM"];
-console.log(MostFreeTime(input))
+// console.log(MostFreeTime(input))
+
+
+let str = "12:15PM"
+
+let times = str.split(":")
+times
+
+let hours = times[1].slice(2) ? parseInt(times[0]) + 12 : parseInt(times[0])
+let minutes = times[1].slice(0,2)
+minutes
+hours
+
+
+
+
+
+
+let getMostFreeTime = (arr) => {
+
+  let parseDate = (string) => {
+    const times = string.split(":")
+    return new Date(0, 0, 0,
+      times[1].slice(2) ? parseInt(times[0]) + 12 : parseInt(times[0]),
+      times[1].slice(0,2))
+  }
+
+  let parseDates = (arr) => {
+    return arr.map((times) => {
+      let timeArr = times.split("-")
+      return {
+        "start": parseDate(timeArr[0]),
+        "end": parseDate(timeArr[1])
+      }
+    })
+  }
+
+  let getDates = parseDates(arr).sort((a,b) => a.start - b.start)
+  let timeDiffs = []
+  let [i, j] = [0, 1]
+  while(j < getDates.length - 1){
+    let timeDiff = getDates[j].start.getMinutes() - getDates[i].end.getMinutes()
+    timeDiffs.push(timeDiff)
+    i++; j++;
+  }
+  return Math.max(...timeDiffs)
+}
+
+console.log(getMostFreeTime(input))
+
+
+
+
