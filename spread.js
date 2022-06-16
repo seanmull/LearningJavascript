@@ -17,6 +17,10 @@ mergedObj
 
 !!mergedObj
 
+let set_x = new Set(x)
+set_x
+set_x.add(() => console.log("something"))
+set_x
 
 
 

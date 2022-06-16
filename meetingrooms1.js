@@ -1,14 +1,14 @@
 
 function canAttendMeetings(intervals) {
-  left = 0;
-  right = 1;
-  intervals.sort((a,b) => a[0] - b[0]) 
+  let left = 0;
+  let right = 1;
+  intervals.sort((a, b) => a[0] - b[0])
   intervals
-  n = intervals.length;
+  let n = intervals.length;
 
-  while(right < n){
-    if(intervals[left][1] > intervals[right][0]){
-        return false; 
+  while (right < n) {
+    if (intervals[left][1] > intervals[right][0]) {
+      return false;
     }
     left++;
     right++;
@@ -16,5 +16,5 @@ function canAttendMeetings(intervals) {
   return true;
 }
 
-const intervals = [[0,15],[5,10],[15,20]]
+const intervals = [[0, 15], [5, 10], [15, 20]]
 console.log(canAttendMeetings(intervals));
