@@ -61,3 +61,44 @@ Object.freeze(data)
 
 data.type = "something"
 console.log(data.type)
+
+let person = {
+  name: "Sean Mull",
+  getName: function() {
+    console.log(this.name)
+  }
+}
+
+person
+console.log(person.getName())
+let f = person.getName.bind(person)
+person.getName()
+
+
+let arr = ["something", "something else"]
+
+let str = arr.map((ele) => {
+  return `'${ele}'`
+}).join(" , ")
+console.log(str)
+
+// let str = '[
+//     {"url":"https://cdn.nightlife.com.au/","use_default_speed":true},
+//     {"url":"https://144.217.247.192/","use_default_speed":true}
+// ]'
+
+const module = {
+  x: 42,
+  getX: function() {
+    return this.x
+  }
+}
+
+const unboundedGetX = module.getX
+//function lost scope of module
+console.log(unboundedGetX())
+
+//we bind the function to module so it then has access to local scope
+const boundedGetX = unboundedGetX.bind(module)
+console.log(boundedGetX())
+

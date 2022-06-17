@@ -26,14 +26,14 @@ function MostFreeTime(strArr) {
     time1.endTime = time2
     startTimes.push(time1);
   }
-  startTimes.sort(function (a, b) { return a.totalMinutes - b.totalMinutes });
+  startTimes.sort(function(a, b) { return a.totalMinutes - b.totalMinutes });
 
   //to find difference between times
   var diff = 0; mostDiff = 0;
   for (var i = 0; i < startTimes.length - 1; i++) {
     var endTimeOfEvent = startTimes[i].endTime;
     var startTimeOfNextEvent = startTimes[i + 1];
-     var diff = startTimeOfNextEvent.totalMinutes - endTimeOfEvent.totalMinutes;
+    var diff = startTimeOfNextEvent.totalMinutes - endTimeOfEvent.totalMinutes;
     if (diff > mostDiff)
       mostDiff = diff;
   }
@@ -59,7 +59,7 @@ let times = str.split(":")
 times
 
 let hours = times[1].slice(2) ? parseInt(times[0]) + 12 : parseInt(times[0])
-let minutes = times[1].slice(0,2)
+let minutes = times[1].slice(0, 2)
 minutes
 hours
 
@@ -68,18 +68,18 @@ hours
 
 
 
-let getMostFreeTime = (arr) => {
+const getMostFreeTime = (arr) => {
 
-  let parseDate = (string) => {
+  const parseDate = (string) => {
     const times = string.split(":")
     return new Date(0, 0, 0,
       times[1].slice(2) ? parseInt(times[0]) + 12 : parseInt(times[0]),
-      times[1].slice(0,2))
+      times[1].slice(0, 2))
   }
 
-  let parseDates = (arr) => {
+  const parseDates = (arr) => {
     return arr.map((times) => {
-      let timeArr = times.split("-")
+      const timeArr = times.split("-")
       return {
         "start": parseDate(timeArr[0]),
         "end": parseDate(timeArr[1])
@@ -87,19 +87,21 @@ let getMostFreeTime = (arr) => {
     })
   }
 
-  let getDates = parseDates(arr).sort((a,b) => a.start - b.start)
+  const convertMinutesToString = (minutes) => {
+    const hours = Math.floor(minutes / 60)
+    return [hours, minutes - (hours * 60)].join(":")
+  }
+
+  const getDates = parseDates(arr).sort((a, b) => a.start - b.start)
   let timeDiffs = []
   let [i, j] = [0, 1]
-  while(j < getDates.length - 1){
+  while (j < getDates.length - 1) {
     let timeDiff = getDates[j].start.getMinutes() - getDates[i].end.getMinutes()
     timeDiffs.push(timeDiff)
     i++; j++;
   }
-  return Math.max(...timeDiffs)
+  const maxTimeInMinutes = Math.max(...timeDiffs)
+  return convertMinutesToString(maxTimeInMinutes)
 }
 
 console.log(getMostFreeTime(input))
-
-
-
-
