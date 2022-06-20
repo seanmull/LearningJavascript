@@ -7,7 +7,7 @@
         "protocol": "auto",
         "stopOnEntry": true,
         "console": "integratedTerminal",
-        "program": "${workspaceRoot}/dsa/maxSubArray.js",
+        "program": "${workspaceRoot}/tree.js",
         "cwd": "${workspaceRoot}"
       }
     }
