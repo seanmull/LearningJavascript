@@ -47,7 +47,40 @@ class Tree {
     }
     return false
   }
+
+  BST() {
+    let current = this.root
+    let q = [current]
+    let result = []
+    while (q.length !== 0) {
+      current = q.shift()
+      result.push(current.value)
+      if (current.left !== null) q.push(current.left)
+      if (current.right !== null) q.push(current.right)
+    }
+    return result
+  }
+
+  InOrderTrav() {
+    return this.InOrderTravHelper(this.root, [])
+  }
+
+  InOrderTravHelper(root, results) {
+    if (root !== null) {
+      this.InOrderTravHelper(root.left)
+      console.log(root.value)
+      this.InOrderTravHelper(root.right)
+    }
+    return results
+  }
 }
+
+//     2
+//   1   3
+// 4
+
+// q [1,3]
+// r [2]
 
 let tree = new Tree(2)
 tree.insert(3)
@@ -55,7 +88,10 @@ tree.insert(1)
 tree.insert(4)
 tree.root.right.right.value
 console.log(tree)
-tree.find(3)
-tree.find(2)
-tree.find(1)
-tree.find(9)
+
+tree.BST()
+tree.InOrderTrav()
+// tree.find(3)
+// tree.find(2)
+// tree.find(1)
+// tree.find(9)
