@@ -7,11 +7,11 @@ class TreeNode {
     }
 }
 
-first = new TreeNode(3);
-second = new TreeNode(9);
-third = new TreeNode(20);
-fourth = new TreeNode(15);
-fifth = new TreeNode(7);
+let first = new TreeNode(3);
+let second = new TreeNode(9);
+let third = new TreeNode(20);
+let fourth = new TreeNode(15);
+let fifth = new TreeNode(7);
 
 first.left = second;
 first.right = third;
