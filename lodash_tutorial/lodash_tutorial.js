@@ -73,3 +73,6 @@ let d = [1, 2]
 _.isEqual(c, d)
 c === d
 
+//uniqBy
+_.uniqBy([1, 2, 1, 2, 3])
+_.uniqBy([{ 'x': 1 }, { 'y': 2 }], 'x')
