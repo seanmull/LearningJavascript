@@ -2,10 +2,10 @@ var mostCommonWord = function(paragraph, banned) {
     let bannedSet = new Set(banned.map((word) => word.toLowerCase()))
     let frequencyOfWords = {}
 
-    paragraph.replace(/,./, "")
+    paragraph.replace(/[^a-zA-Z0-9 ]/g, " ")
              .split(" ")
              .map((word) => word.toLowerCase())
-             .filter((word) => !bannedSet.has(word))
+             .filter((word) => !bannedSet.has(word) && word !== "")
              .forEach((word) => {
                  if(word in frequencyOfWords) frequencyOfWords[word]++
                  else frequencyOfWords[word] = 1
@@ -18,6 +18,6 @@ var mostCommonWord = function(paragraph, banned) {
     return entries[maxIndex][0]
 };
 
-console.log(mostCommonWord("hello hello i am the best of someone something something one", ["something"])
+console.log(mostCommonWord("Bob. hIt, baLl", ["bob", "hit"])
 )
 
