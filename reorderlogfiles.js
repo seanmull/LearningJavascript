@@ -27,22 +27,56 @@
 // The digit-logs have a relative order of "dig1 8 1 5 1", "dig2 3 6".
 
 var reorderLogFiles = function(logs) {
-    let logsMap = logs.map(log => {
-      let contents = log.slice(log.indexOf(" ") + 1) 
-      return {
-        msg: log,
-        contents: contents,
-        //true for digit
-        type: /[0-9]/.test(contents)
-      }}) 
-    let digitLogs = logsMap.filter(log => log.type)
-    let letterLogs = logsMap.filter(log => !log.type)
-                            .sort((a, b) => (a.contents).localeCompare(b.contents))
-    return [...letterLogs, ...digitLogs].map((log) => log.msg)
+  let compareTo = (log1, log2) => {
+    let [id1, ...content1] = log1.split(" ")
+    content1 = content1.join(" ")
+    let [id2, ...content2] = log2.split(" ")
+    content2 = content2.join(" ")
+    let isDigit1 = /[0-9]/.test(content1[0])
+    let isDigit2 = /[0-9]/.test(content2[0])
+
+    if(!isDigit1 && !isDigit2){
+      let cmp = content1.localeCompare(content2)
+      if(cmp !== 0){
+        return cmp
+      }
+      return id1.localeCompare(id2)
+    }
+
+    if(!isDigit1 && isDigit2){
+      return -1
+    }else if(isDigit1 && !isDigit2){
+      return 1
+    }else{
+      return 0
+    }
+  }
+  logs.sort(compareTo)
+  return logs
 };
 
-let logs = ["dig1 8 1 5 1","let1 art can","dig2 3 6","let2 own kit dig","let3 art zero"]
+let logs = ["dig1 8 1 5 1","let9 art can","dig2 3 6","let2 own kit dig","let3 art can"]
 console.log(reorderLogFiles(logs))
 let dig = "dig1 8 1 5 1"
 dig.slice(dig.indexOf(" ") + 1)
 let letter = "let1 art can"
+// var reorderLogFiles = function(logs) {
+//     let logsMap = logs.map(log => {
+//       let contents = log.slice(log.indexOf(" ") + 1) 
+//       return {
+//         msg: log,
+//         contents: contents,
+//         //true for digit
+//         type: /[0-9]/.test(contents)
+//       }}) 
+//     let digitLogs = logsMap.filter(log => log.type)
+//     let letterLogs = logsMap.filter(log => !log.type)
+//                             .sort((a, b) => (a.contents).localeCompare(b.contents))
+//     return [...letterLogs, ...digitLogs].map((log) => log.msg)
+// };
+let s = "adfas asdfsa sadfa"
+let [a, ...b] = s.split(" ")
+b = b.join(" ")
+
+a
+b
