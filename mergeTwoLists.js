@@ -21,17 +21,27 @@ var mergeTwoLists = function(list1, list2) {
     let mergedList = dummy
     let p1 = list1, p2 = list2
 
-    while(p1 !== null && p2 !== null){
-      if(p2 === null || p2.val >= p1.val){
+    while(p1 !== null || p2 !== null){ // null , 4
+      if(p2 === null){
         mergedList.next = p1
         // move up merged and p1
-        mergedList = mergedList.next
-        p1 = p1.next
-      }else{
-        mergedList.next = p2
+        mergedList = mergedList.next 
+        p1 = p1.next 
+      }else if (p1 === null){
+        mergedList.next = p2 
         // move up merged and p1
-        mergedList = mergedList.next
-        p2 = p2.next
+        mergedList = mergedList.next 
+        p2 = p2.next 
+      }else if(p2.val < p1.val){
+        mergedList.next = p2 
+        // move up merged and p1
+        mergedList = mergedList.next 
+        p2 = p2.next 
+      }else{
+        mergedList.next = p2 
+        // move up merged and p1
+        mergedList = mergedList.next 
+        p2 = p2.next 
       }
         // disconnect next
         mergedList.next = null
