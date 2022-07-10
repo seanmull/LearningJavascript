@@ -2,6 +2,7 @@ function numIslands(grid){
   const height = grid.length
   const width = grid[0].length
   let count = 0
+
   const dfs = (row, column) => {
     if(row < 0 ||
        column < 0 ||
