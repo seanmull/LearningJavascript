@@ -7,6 +7,7 @@
 // void put(int key, int value) Update the value of the key if the key exists. Otherwise, add the key-value pair to the cache. If the number of keys exceeds the capacity from this operation, evict the least recently used key.
 // The functions get and put must each run in O(1) average time complexity.
 
+// (1, 1) (2, 2) 2
 // Input
 // ["LRUCache", "put", "put", "get", "put", "get", "put", "get", "get", "get"]
 // [[2], [1, 1], [2, 2], [1], [3, 3], [2], [4, 4], [1], [3], [4]]
@@ -31,7 +32,6 @@
 var LRUCache = function(capacity) {
    this.map = new Map()
    this.capacity = capacity
-   this.queue = []
 };
 
 /** 
@@ -39,7 +39,11 @@ var LRUCache = function(capacity) {
  * @return {number}
  */
 LRUCache.prototype.get = function(key) {
-  return this.map.get(key) ? this.map.get(key) : -1
+  let value = this.map.get(key)
+  // this resets the value to end of the map
+  this.map.delete(key)
+  this.map.set(key, value)
+  return value ? value : 1
 };
 
 /** 
@@ -48,10 +52,9 @@ LRUCache.prototype.get = function(key) {
  * @return {void}
  */
 LRUCache.prototype.put = function(key, value) {
-  this.queue.push(key)
   if(this.map.size >= this.capacity){
-    let oldestKey = this.queue.shift()
-    this.map.delete(oldestKey)
+    // remove the oldest record of the map
+    this.map.delete(this.map.keys().next().value)
   }
   this.map.set(key, value)
 };
@@ -68,9 +71,13 @@ obj.put(1, 1)
 console.log(obj)
 obj.put(2, 2)
 console.log(obj)
+obj.get(1)
+console.log(obj)
 obj.put(3, 3)
 console.log(obj)
-obj.get(32)
+console.log(obj.get(2))
+obj.put(4, 4)
+console.log(obj)
 
 // Input
 // ["LRUCache", "put", "put", "get", "put", "get", "put", "get", "get", "get"]
