@@ -38,10 +38,10 @@ var mergeTwoLists = function(list1, list2) {
         mergedList = mergedList.next 
         p2 = p2.next 
       }else{
-        mergedList.next = p2 
+        mergedList.next = p1 
         // move up merged and p1
         mergedList = mergedList.next 
-        p2 = p2.next 
+        p1 = p1.next 
       }
         // disconnect next
         mergedList.next = null
