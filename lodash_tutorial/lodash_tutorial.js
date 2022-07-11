@@ -76,3 +76,28 @@ c === d
 //uniqBy
 _.uniqBy([1, 2, 1, 2, 3])
 _.uniqBy([{ 'x': 1 }, { 'y': 2 }], 'x')
+
+//defaultsdeep
+let config = {
+  "a": 1,
+  "b": 2,
+}
+
+let AppOnlyConfig = {
+  "a": 8,
+  "b": 4,
+  "c": 3,
+}
+
+let SkeletorOverridesConfig = {
+  "b": 2,
+  "d": 5
+}
+
+let base = {
+  "e": 0,
+  "f": 7,
+}
+
+_.defaultsDeep(config, AppOnlyConfig, SkeletorOverridesConfig, base)
+config
