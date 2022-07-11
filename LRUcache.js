@@ -39,11 +39,14 @@ var LRUCache = function(capacity) {
  * @return {number}
  */
 LRUCache.prototype.get = function(key) {
+  if(!this.map.has(key)){
+    return -1
+  }
   let value = this.map.get(key)
   // this resets the value to end of the map
   this.map.delete(key)
   this.map.set(key, value)
-  return value ? value : 1
+  return value
 };
 
 /** 
@@ -52,11 +55,14 @@ LRUCache.prototype.get = function(key) {
  * @return {void}
  */
 LRUCache.prototype.put = function(key, value) {
-  if(this.map.size >= this.capacity){
+  if(this.map.has(key)){
+    this.map.delete(key)
+  }
+  this.map.set(key, value)
+  if(this.map.size > this.capacity){
     // remove the oldest record of the map
     this.map.delete(this.map.keys().next().value)
   }
-  this.map.set(key, value)
 };
 
 /** 
