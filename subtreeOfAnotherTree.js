@@ -7,15 +7,15 @@ class TreeNode {
     }
 }
 
-first = new TreeNode(3);
-second = new TreeNode(4);
-third = new TreeNode(5);
-fourth = new TreeNode(1);
-fifth = new TreeNode(2);
+let first = new TreeNode(3);
+let second = new TreeNode(4);
+let third = new TreeNode(5);
+let fourth = new TreeNode(1);
+let fifth = new TreeNode(2);
 
-sixth = new TreeNode(4);
-seventh = new TreeNode(1);
-eigth = new TreeNode(2);
+let sixth = new TreeNode(4);
+let seventh = new TreeNode(1);
+let eigth = new TreeNode(2);
 
 first.left = second;
 first.right = third;
@@ -32,10 +32,10 @@ console.log(isSubtree(first, sixth))
 console.log(isSameTree(second, sixth))
 
 function isSubtree(root, subRoot) {
-    if (!root) return true;
-    isSubtree(root.left, subRoot);
-    isSubtree(root.right, subRoot);
-    return isSameTree(root.left,subRoot) || isSameTree(root.right, subRoot);
+    if(root === null) return false  
+    if(isSameTree(root, subRoot)) return true
+    return isSubtree(root.left, subRoot) &&
+           isSubtree(root.right, subRoot)
 }
 
 function isSameTree(p, q) {
@@ -46,9 +46,6 @@ function isSameTree(p, q) {
         isSameTree(p.left, q.left) &&
         isSameTree(p.right, q.right);
 }
-
-
-
 
 function inOrderTraversal(node) {
     if (node === null) return;
