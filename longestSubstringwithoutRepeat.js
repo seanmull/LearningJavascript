@@ -20,20 +20,19 @@
  * @return {number}
  */
 var lengthOfLongestSubstring = function(s) {
-  let max = 0, count = 0
-  let p = 0
+  let max = 0
+  let r = 0, l = 0
   let cache = new Set()    
 
-  while(p < s.length){
-    if(!cache.has(s[p])){
-      count++ 
-      max = Math.max(max, count)
+  while(r < s.length){
+    if(!cache.has(s[r])){
+      max = Math.max(max, r - l + 1)
+      cache.add(s[r])
+      r++
     }else{
-      count = 1
-      cache.clear()
+      cache.delete(s[l])
+      l++
     }
-    cache.add(s[p])
-    p++
   }
   return max
 };
@@ -41,3 +40,4 @@ var lengthOfLongestSubstring = function(s) {
 console.log(lengthOfLongestSubstring("pwwkew"))
 console.log(lengthOfLongestSubstring("bbbbb"))
 console.log(lengthOfLongestSubstring("abcabcbb"))
+console.log(lengthOfLongestSubstring("dvdf"))
