@@ -43,6 +43,8 @@ let nextHighest = (arr) => {
       results.push(-1)
       queue.shift(); l++; r = l;
     }
+    // this front back queue stuff is incorrect since
+    // it doesn't check whats in the middle
     // check front of queue
     else if(front > arr[l]){
       results.push(front)
