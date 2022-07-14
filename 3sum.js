@@ -17,33 +17,29 @@
  * @return {number[][]}
  */
 var threeSum = function(nums) {
-   results = []
+   let results = []
    nums.sort() 
-   let l = nums.length
-   let x = 0, y = 1, z = l - 1
-   while(x < l - 2){
-      if(y >= z){
-        x++
-        y = x + 1
-        z = l - 1
-        continue
-      }
-      if(nums[x] + nums[y] + nums[z] === 0){
-        results.push([nums[x], nums[y], nums[z]]) 
-        x++
-        y = x + 1
-        z = l - 1
-      }else if(nums[x] + nums[y] + nums[z] > 0){
-        z--
+   for(let i = 0; i < nums.length; i++){
+    if(i != 0 && nums[i] === nums[i - 1]) continue
+    let j = i + 1
+    let k = nums.length - 1
+    while(j < k){
+      if(nums[i] + nums[j] + nums[k] === 0){
+        results.push([nums[i], nums[j], nums[k]])
+        j++
+        while (j < k && nums[j] == nums[j - 1]) j++
+      }else if(nums[i] + nums[j] + nums[k] < 0){
+        j++
       }else{
-        y++
+        k--
       }
+    }
    }
    return results
 };
 
 
 // let nums = [-1,0,1,2,-1,-4]
-let nums = [0,1,1]
-// let nums = [0,0,0]
+// let nums = [0,1,1]
+let nums = [0,0,0]
 console.log(threeSum(nums))
