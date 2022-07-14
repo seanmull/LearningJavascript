@@ -6,7 +6,8 @@
  * @return {number[]}
  */
 var prisonAfterNDays = function(cells, n) {
-  n = n % ((2 * cells.length) - 2)
+  mod = 2 * (cells.length - 1)
+  n = n % mod !== 0 ? n % mod : mod
   let a;
   for(let day = 0; day < n; day++){
     a = Array(8).fill(0)    
@@ -21,5 +22,6 @@ var prisonAfterNDays = function(cells, n) {
   return a
 };
 
-console.log(prisonAfterNDays([0,1,0,1,1,0,0,1], 7))
-console.log(prisonAfterNDays([1,0,0,1,0,0,1,0], 1000000000))
+// console.log(prisonAfterNDays([0,1,0,1,1,0,0,1], 7))
+// console.log(prisonAfterNDays([1,0,0,1,0,0,1,0], 1000000000))
+console.log(prisonAfterNDays([1,1,0,1,1,0,0,1], 300663720))
