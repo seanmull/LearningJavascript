@@ -18,7 +18,7 @@
  */
 var threeSum = function(nums) {
    let result = []
-   nums.sort()
+   nums.sort((a, b) => a - b)
    // stop 2 places from the end that is where lo and hi are
    for(let i = 0; i < nums.length - 2; i++){
     // if its less then 0 theres no way it can sum to zero since its the earlier element
