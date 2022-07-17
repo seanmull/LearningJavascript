@@ -20,21 +20,30 @@ fourth.next = fifth;
 fifth.next = sixth;
 fourth;
 
-function addTwoNumbers(l1, l2) {
-  l1;
-  l2;
-  let carryOver = 0;
-  while (l1 && l2) {
-    let num = l1.val + l2.val + carryOver;
-    if (carryOver == 1) carryOver = 0;
-    if (num > 9) {
-      carryOver = 1;
-      num -= 10;
+var addTwoNumbers = function(l1, l2) {
+    let p1 = l1, p2 = l2
+    let d = new ListNode(0)
+    let co = 0
+    let c = d
+    let v1
+    let v2
+    let rm
+    let n
+    while(!(p1 === null && p2 === null) || co !== 0){
+        v1 = p1 === null ? 0 : p1.val
+        v2 = p2 === null ? 0 : p2.val
+        sum = v1 + v2 + co
+        co = (sum) > 9 ? 1 : 0
+        rm = (sum) % 10
+        n = co === 1 ?
+                new ListNode(rm) :
+                new ListNode(sum)
+        c.next = n
+        c = c.next
+        if(p1 !== null) p1 = p1.next
+        if(p2 !== null) p2 = p2.next
     }
-    console.log(num);
-    l1 = l1.next;
-    l2 = l2.next;
-  }
-}
+    return d.next
+};
 
 console.log(addTwoNumbers(first, fourth));
