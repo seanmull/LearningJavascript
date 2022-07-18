@@ -15,8 +15,10 @@ var merge = function(intervals) {
     let j = 0;
     for(let i = 1; i < intervals.length; i++){
         if(intervals[i][0] <= mergedIntervals[j][1]){
+            //edit the end value for interval
             mergedIntervals[j][1] = Math.max(intervals[i][1], mergedIntervals[j][1]);
         }else{
+            //add the interval and make that one the one you compare
             mergedIntervals.push(intervals[i]);
             j++;
         }
