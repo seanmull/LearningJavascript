@@ -48,7 +48,7 @@ var orangesRotting = function(grid){
     }
     if(rotten.length > 0) m++
   }
-  return fresh === 0 ? m - 1 : -1
+  return fresh === 0 ? m : -1
 }
 
 console.log(orangesRotting(grid))
