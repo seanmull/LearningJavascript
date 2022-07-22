@@ -25,13 +25,15 @@ RandomizedSet.prototype.remove = function(val) {
   m = this.m
   a = this.a
   if(!m.has(val)) return false
-  let i = m[val]
-  delete m[val]
-  if(a[a.length - 1] !== val){
-    let tmp = a[i]
-    a[i] = a[a.length - 1]
-    a[a.length - 1] = tmp
-  }
+  // move the element from the end to i
+  // this makes it so if it is at the end it removes
+  // if not the ith element is overitten with the end one
+  let i = m.get(val)
+  let l = a[a.length - 1]
+  a[i] = l
+  // update the map to the right index
+  m.set(l, i)
+  m.delete(val)
   a.pop()
   return true
 };
@@ -51,11 +53,3 @@ RandomizedSet.prototype.getRandom = function() {
  * var param_2 = obj.remove(val)
  * var param_3 = obj.getRandom()
  */
-var obj = new RandomizedSet()
-var param_1 = obj.insert(1)
-console.log(param_1)
-var param_2 = obj.remove(2)
-console.log(param_2)
-var param_3 = obj.getRandom()
-console.log(param_3)
- 
