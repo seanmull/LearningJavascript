@@ -6,11 +6,11 @@ class TreeNode {
   }
 }
 
-first = new TreeNode(3);
-second = new TreeNode(9);
-third = new TreeNode(20);
-fourth = new TreeNode(15);
-fifth = new TreeNode(7);
+let first = new TreeNode(3);
+let second = new TreeNode(9);
+let third = new TreeNode(20);
+let fourth = new TreeNode(15);
+let fifth = new TreeNode(7);
 
 first.left = second;
 first.right = third;
@@ -21,23 +21,21 @@ third.right = fifth;
 
 // inOrderTraversal(first);
 
-levelOrder(first);
-
-levelOrderArr = [];
+const levelOrderArr = Array();
 
 function levelOrder(root) {
   if (root === null) {
     // console.log(null);
     return;
   }
-  level = [];
-  left = levelOrder(root.left);
-  right = levelOrder(root.right);
+  let level = [];
+  let left = levelOrder(root.left);
+  let right = levelOrder(root.right);
   level = [left, right];
   levelOrderArr.push(level);
 }
 
-levelOrderArr;
+console.log(levelOrder(first));
 
 function inOrderTraversal(node) {
   if (node === null) return;
