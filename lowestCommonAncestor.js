@@ -1,9 +1,9 @@
 class TreeNode {
-    constructor(val, left, right) {
-        this.val = val 
-        this.left = left
-        this.right = right
-    }
+  constructor(val, left, right) {
+    this.val = val;
+    this.left = left;
+    this.right = right;
+  }
 }
 
 first = new TreeNode(6);
@@ -25,25 +25,24 @@ fifth.right = seventh;
 third.left = eigth;
 third.right = ninth;
 
+//       6
+//    2     8
+// 0    4 7   9
+//    3   5
 // inOrderTraversal(first);
+
+/*
+  Base case
+  Case 1 root = null return null
+  Case 2 root = p or q return root.val
+  Recursive case
+  left = lca(root.left)
+  right = lca(root.right)
+  if(left != null and right == null) return left 
+  if(right != null and left == null) return right
+  return null
+*/
 
 console.log(lowestCommonAncestor(first, 7, 9));
 
-function lowestCommonAncestor(root, p, q){
-    if(p.val < root.val && q.val < root.val)
-        return lowestCommonAncestor(root.left, p, q);
-
-    if(p.val > root.val && q.val > root.val)
-        return lowestCommonAncestor(root.right, p, q);
-
-    return root.val;
-}
-
-
-
-function inOrderTraversal(node){
-    if(node === null) return;
-    inOrderTraversal(node.left);
-    console.log(node.val);
-    inOrderTraversal(node.right);
-}
+function lowestCommonAncestor(root, p, q) {}
