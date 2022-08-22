@@ -1,0 +1,10 @@
+{
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "debug",
+      "program": "${file}"
+    }
+  ]
+}
