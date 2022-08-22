@@ -1,0 +1,10 @@
+{
+  "configurations": [
+    {
+      "type": "javascript",
+      "request": "launch",
+      "name": "debug",
+      "program": "${file}"
+    }
+  ]
+}
