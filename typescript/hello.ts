@@ -1,4 +1,13 @@
-#!/usr/bin/env node
-let message : string = 'Hello World';
+#! /usr/bin/env node
+console.log("hello");
 
-console.log(message);
+console.log(1);
+
+let x = 1;
+let y = 2;
+
+function add(x: number, y?: number) {
+  return x + y!;
+}
+
+add(2);
